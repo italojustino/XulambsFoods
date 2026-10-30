@@ -127,7 +127,22 @@ namespace XulambsFoods
             return novaPizza;
         }
         #endregion
-
+        #region sobremesa
+        static void EscolherSobremesa(Pedido pedido)
+        {
+            string[] sobremesas = Enum.GetNames<ESobremesa>();
+            Console.WriteLine("Escolha uma sobremesa:");
+            int i = 1;
+            foreach (string nome in sobremesas)
+            {
+                Console.WriteLine($"{i} - {nome}");
+                i++;
+            }
+            Console.Write("Sua escolha: ");
+            int escolha = LerInteiro();
+            ESobremesa sobremesa = Enum.GetValues<ESobremesa>()[escolha - 1];
+            pedido.AdicionarSobremesa(sobremesa);
+        }
         #region pedido
 
         static PedidoEntrega CriarPedidoEntrega()

@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XulambsFoods {
-    public static class ExtensaoPizzaria {
-        public static double Valor(this EBorda borda) {
-            return borda switch {
+namespace XulambsFoods
+{
+    public static class ExtensaoPizzaria
+    {
+        public static double Valor(this EBorda borda)
+        {
+            return borda switch
+            {
                 EBorda.Chocolate => 8,
                 EBorda.Cheddar => 10,
                 EBorda.Requeijao => 7,
@@ -19,9 +23,9 @@ namespace XulambsFoods {
         {
             return distancia switch
             {
-                (<= 4)          => ETaxaEntrega.Curta,
-                (> 4 and <= 8)  => ETaxaEntrega.Media,
-                (> 8)           => ETaxaEntrega.Longa
+                (<= 4) => ETaxaEntrega.Curta,
+                (> 4 and <= 8) => ETaxaEntrega.Media,
+                (> 8) => ETaxaEntrega.Longa
             };
         }
         public static double ValorTaxa(this ETaxaEntrega distancia)
@@ -31,6 +35,29 @@ namespace XulambsFoods {
                 ETaxaEntrega.Curta => 0,
                 ETaxaEntrega.Media => 5,
                 ETaxaEntrega.Longa => 8,
+                _ => 0
+            };
+        }
+        public static double ValorBebida(this EBebida valor)
+        {
+            return valor switch
+            {
+                EBebida.ÁguaDaCasa => 0,
+                EBebida.ÁguaComGás => 4,
+                EBebida.CháComGás => 6,
+                EBebida.Sucos => 9,
+                EBebida.Cerveja => 15,
+                EBebida.TaçaDeVinho => 18,
+                _ => 0
+            };
+        }
+        public static double ValorSobremesa(this ESobremesa valor)
+        {
+            return valor switch
+            {
+                ESobremesa.BrigadeiroNaColher => 8,
+                ESobremesa.PudimDeLeiteCondensado => 10,
+                ESobremesa.DoceDeLeiteNoPires => 9,
                 _ => 0
             };
         }

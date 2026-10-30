@@ -3,7 +3,7 @@ using System.Text;
 
 
 namespace XulambsFoods {    
-    public class Pizza {
+    public class Pizza : Produto {
 
         /// <summary>
         /// Lembre-se:
